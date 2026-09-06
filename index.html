@@ -1,187 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AeroBrief</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<title>AeroBrief</title>
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f4f6f8;
-      color: #17202a;
-    }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    .app {
-      max-width: 430px;
-      min-height: 100vh;
-      margin: auto;
-      background: white;
-      padding: 28px 22px;
-    }
+body {
+    margin: 0;
+    background: #eef2f6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #17202a;
+}
 
-    .logo {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
+.app {
+    max-width: 430px;
+    min-height: 100vh;
+    margin: auto;
+    background: #ffffff;
+    padding: 24px 20px 35px;
+}
 
-    .subtitle {
-      color: #7b8794;
-      margin-bottom: 35px;
-    }
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
 
-    .card {
-      background: #f7f9fb;
-      border-radius: 18px;
-      padding: 18px;
-      margin-bottom: 14px;
-    }
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
 
-    label {
-      display: block;
-      font-size: 12px;
-      color: #7b8794;
-      margin-bottom: 7px;
-      text-transform: uppercase;
-    }
+.status {
+    font-size: 11px;
+    font-weight: 700;
+    color: #16803c;
+    background: #e8f7ed;
+    padding: 7px 10px;
+    border-radius: 20px;
+}
 
-    input {
-      width: 100%;
-      border: none;
-      background: transparent;
-      font-size: 20px;
-      font-weight: 600;
-      outline: none;
-    }
+.hero {
+    margin-bottom: 25px;
+}
 
-    .brief-button {
-      width: 100%;
-      border: none;
-      border-radius: 18px;
-      padding: 19px;
-      margin-top: 12px;
-      background: #17202a;
-      color: white;
-      font-size: 17px;
-      font-weight: 700;
-      cursor: pointer;
-    }
+.hero h1 {
+    font-size: 32px;
+    line-height: 1.05;
+    margin: 0 0 10px;
+    letter-spacing: -1px;
+}
 
-    .brief-button:active {
-      transform: scale(0.98);
-    }
+.hero p {
+    margin: 0;
+    color: #7b8794;
+    font-size: 15px;
+    line-height: 1.45;
+}
 
-    .result {
-      display: none;
-      margin-top: 25px;
-      padding: 20px;
-      border-radius: 18px;
-      background: #eef2f5;
-    }
+.card {
+    background: #f6f8fa;
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 14px;
+}
 
-    .result h2 {
-      margin-top: 0;
-    }
+.card-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #8995a3;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    letter-spacing: .5px;
+}
 
-    .result p {
-      line-height: 1.5;
-      color: #4b5563;
-    }
-  </style>
+.route {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.route-box {
+    flex: 1;
+}
+
+.route-label {
+    font-size: 11px;
+    color: #8995a3;
+    margin-bottom: 4px;
+}
+
+input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 24px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #17202a;
+}
+
+input::placeholder {
+    color: #b8c0c8;
+}
+
+.arrow {
+    font-size: 22px;
+    color: #9aa5b1;
+    padding-top: 15px;
+}
+
+.normal-input {
+    font-size: 18px;
+    text-transform: none;
+}
+
+.brief-button {
+    width: 100%;
+    border: none;
+    border-radius: 20px;
+    padding: 19px;
+    margin-top: 5px;
+    background: #17202a;
+    color: white;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: .2px;
+    cursor: pointer;
+}
+
+.brief-button:active {
+    transform: scale(.98);
+}
+
+.briefing {
+    display: none;
+    margin-top: 25px;
+}
+
+.briefing-title {
+    font-size: 21px;
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.info {
+    background: #f6f8fa;
+    border-radius: 16px;
+    padding: 15px;
+}
+
+.info-label {
+    font-size: 11px;
+    color: #8995a3;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.info-value {
+    font-size: 17px;
+    font-weight: 750;
+}
+
+.risk {
+    margin-top: 12px;
+    background: #fff5df;
+    border-radius: 18px;
+    padding: 17px;
+}
+
+.risk-title {
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 7px;
+}
+
+.risk-text {
+    font-size: 14px;
+    color: #6b5a38;
+    line-height: 1.45;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #a0a9b3;
+    font-size: 11px;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="app">
+<div class="app">
 
-    <div class="logo">✈️ AeroBrief</div>
+    <div class="header">
+        <div class="logo">✈️ AeroBrief</div>
+        <div class="status">● ONLINE</div>
+    </div>
 
-    <div class="subtitle">
-      Your intelligent flight briefing assistant
+    <div class="hero">
+        <h1>Flight briefing.</h1>
+        <p>
+            Prepare your flight before you leave the ground.
+        </p>
     </div>
 
     <div class="card">
-      <label>Departure</label>
-      <input id="departure" placeholder="ICAO code" maxlength="4">
+
+        <div class="card-title">Route</div>
+
+        <div class="route">
+
+            <div class="route-box">
+                <div class="route-label">FROM</div>
+                <input
+                    id="departure"
+                    maxlength="4"
+                    placeholder="UUEE">
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="route-box">
+                <div class="route-label">TO</div>
+                <input
+                    id="destination"
+                    maxlength="4"
+                    placeholder="ULLI">
+            </div>
+
+        </div>
+
     </div>
 
     <div class="card">
-      <label>Destination</label>
-      <input id="destination" placeholder="ICAO code" maxlength="4">
+
+        <div class="card-title">Aircraft</div>
+
+        <input
+            id="aircraft"
+            class="normal-input"
+            placeholder="Cessna 172">
+
     </div>
 
     <div class="card">
-      <label>Aircraft</label>
-      <input id="aircraft" placeholder="Cessna 172">
+
+        <div class="card-title">Departure time</div>
+
+        <input
+            id="departureTime"
+            class="normal-input"
+            type="time">
+
     </div>
 
-    <button class="brief-button" onclick="briefFlight()">
-      BRIEF ME
+    <button
+        class="brief-button"
+        onclick="generateBriefing()">
+
+        GENERATE BRIEFING →
+
     </button>
 
-    <div class="result" id="result">
+    <div
+        class="briefing"
+        id="briefing">
 
-      <h2>Flight briefing</h2>
+        <div class="briefing-title">
+            Flight overview
+        </div>
 
-      <p id="briefing"></p>
+        <div class="info-grid">
+
+            <div class="info">
+                <div class="info-label">Route</div>
+                <div class="info-value" id="routeResult">—</div>
+            </div>
+
+            <div class="info">
+                <div class="info-label">Aircraft</div>
+                <div class="info-value" id="aircraftResult">—</div>
+            </div>
+
+            <div class="info">
+                <div class="info-label">Departure</div>
+                <div class="info-value" id="timeResult">—</div>
+            </div>
+
+            <div class="info">
+                <div class="info-label">Weather</div>
+                <div class="info-value">Pending</div>
+            </div>
+
+        </div>
+
+        <div class="risk">
+
+            <div class="risk-title">
+                ⚠️ TOP RISKS
+            </div>
+
+            <div class="risk-text">
+                Weather, NOTAMs and route analysis
+                will appear here when live aviation
+                data is connected.
+            </div>
+
+        </div>
 
     </div>
 
-  </div>
+    <div class="footer">
+        AeroBrief • Intelligent Flight Briefing
+    </div>
 
-  <script>
+</div>
 
-    function briefFlight() {
+<script>
 
-      const departure =
+function generateBriefing() {
+
+    const departure =
         document.getElementById("departure").value.toUpperCase();
 
-      const destination =
+    const destination =
         document.getElementById("destination").value.toUpperCase();
 
-      const aircraft =
+    const aircraft =
         document.getElementById("aircraft").value;
 
-      const result =
-        document.getElementById("result");
+    const time =
+        document.getElementById("departureTime").value;
 
-      const briefing =
-        document.getElementById("briefing");
-
-      if (!departure || !destination) {
+    if (!departure || !destination) {
 
         alert(
-          "Please enter departure and destination ICAO codes."
+            "Please enter departure and destination ICAO codes."
         );
 
         return;
-      }
-
-      result.style.display = "block";
-
-      briefing.innerHTML =
-        "Flight: <b>" +
-        departure +
-        " → " +
-        destination +
-        "</b><br><br>" +
-
-        "Aircraft: <b>" +
-        (aircraft || "Not specified") +
-        "</b><br><br>" +
-
-        "This is your first AeroBrief prototype. " +
-        "Weather, NOTAMs and AI briefing will be connected next.";
-
     }
 
-  </script>
+    document.getElementById("routeResult").textContent =
+        departure + " → " + destination;
+
+    document.getElementById("aircraftResult").textContent =
+        aircraft || "Not specified";
+
+    document.getElementById("timeResult").textContent =
+        time || "Not specified";
+
+    document.getElementById("briefing").style.display =
+        "block";
+
+    document.getElementById("briefing").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+</script>
 
 </body>
 </html>

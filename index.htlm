@@ -126,13 +126,17 @@
     </button>
 
     <div class="result" id="result">
+
       <h2>Flight briefing</h2>
+
       <p id="briefing"></p>
+
     </div>
 
   </div>
 
   <script>
+
     function briefFlight() {
 
       const departure =
@@ -151,20 +155,32 @@
         document.getElementById("briefing");
 
       if (!departure || !destination) {
-        alert("Please enter departure and destination ICAO codes.");
+
+        alert(
+          "Please enter departure and destination ICAO codes."
+        );
+
         return;
       }
 
       result.style.display = "block";
 
       briefing.innerHTML =
-        "Flight: <b>" + departure + " → " + destination +
+        "Flight: <b>" +
+        departure +
+        " → " +
+        destination +
         "</b><br><br>" +
-        "Aircraft: <b>" + (aircraft || "Not specified") +
+
+        "Aircraft: <b>" +
+        (aircraft || "Not specified") +
         "</b><br><br>" +
+
         "This is your first AeroBrief prototype. " +
         "Weather, NOTAMs and AI briefing will be connected next.";
+
     }
+
   </script>
 
 </body>

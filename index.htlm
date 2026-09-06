@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AeroBrief</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f4f6f8;
+      color: #17202a;
+    }
+
+    .app {
+      max-width: 430px;
+      min-height: 100vh;
+      margin: auto;
+      background: white;
+      padding: 28px 22px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #7b8794;
+      margin-bottom: 35px;
+    }
+
+    .card {
+      background: #f7f9fb;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      color: #7b8794;
+      margin-bottom: 7px;
+      text-transform: uppercase;
+    }
+
+    input {
+      width: 100%;
+      border: none;
+      background: transparent;
+      font-size: 20px;
+      font-weight: 600;
+      outline: none;
+    }
+
+    .brief-button {
+      width: 100%;
+      border: none;
+      border-radius: 18px;
+      padding: 19px;
+      margin-top: 12px;
+      background: #17202a;
+      color: white;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .brief-button:active {
+      transform: scale(0.98);
+    }
+
+    .result {
+      display: none;
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 18px;
+      background: #eef2f5;
+    }
+
+    .result h2 {
+      margin-top: 0;
+    }
+
+    .result p {
+      line-height: 1.5;
+      color: #4b5563;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <div class="logo">✈️ AeroBrief</div>
+
+    <div class="subtitle">
+      Your intelligent flight briefing assistant
+    </div>
+
+    <div class="card">
+      <label>Departure</label>
+      <input id="departure" placeholder="ICAO code" maxlength="4">
+    </div>
+
+    <div class="card">
+      <label>Destination</label>
+      <input id="destination" placeholder="ICAO code" maxlength="4">
+    </div>
+
+    <div class="card">
+      <label>Aircraft</label>
+      <input id="aircraft" placeholder="Cessna 172">
+    </div>
+
+    <button class="brief-button" onclick="briefFlight()">
+      BRIEF ME
+    </button>
+
+    <div class="result" id="result">
+      <h2>Flight briefing</h2>
+      <p id="briefing"></p>
+    </div>
+
+  </div>
+
+  <script>
+    function briefFlight() {
+
+      const departure =
+        document.getElementById("departure").value.toUpperCase();
+
+      const destination =
+        document.getElementById("destination").value.toUpperCase();
+
+      const aircraft =
+        document.getElementById("aircraft").value;
+
+      const result =
+        document.getElementById("result");
+
+      const briefing =
+        document.getElementById("briefing");
+
+      if (!departure || !destination) {
+        alert("Please enter departure and destination ICAO codes.");
+        return;
+      }
+
+      result.style.display = "block";
+
+      briefing.innerHTML =
+        "Flight: <b>" + departure + " → " + destination +
+        "</b><br><br>" +
+        "Aircraft: <b>" + (aircraft || "Not specified") +
+        "</b><br><br>" +
+        "This is your first AeroBrief prototype. " +
+        "Weather, NOTAMs and AI briefing will be connected next.";
+    }
+  </script>
+
+</body>
+</html>
